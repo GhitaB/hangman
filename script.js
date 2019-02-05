@@ -12,6 +12,7 @@ $(document).ready(function() {
   window.secret_word = "hangman";
   window.public_word = "_______";
   window.game_is_finished = false;
+  window.wrong_letters = "";
 
 
   function choose_word() {
@@ -29,6 +30,8 @@ $(document).ready(function() {
 
   function fail() {
     $("img#main-image").attr("src", "./images/" + fails.toString() + ".png");
+    $("p#status").text("Wrong letters: " + wrong_letters);
+
     if(fails > max_fails) {
       game_over();
     } else {
@@ -60,6 +63,11 @@ $(document).ready(function() {
   }
 
 
+  function add_wrong_letter(letter) {
+    wrong_letters = wrong_letters + " " + letter;
+  }
+
+
   function start_game() {
     choose_word();
     refresh_public_word();
@@ -81,6 +89,7 @@ $(document).ready(function() {
             win();
           }
         } else {
+          add_wrong_letter(key);
           fail();
         }
       }
