@@ -6,7 +6,6 @@ $(document).ready(function() {
 
   function game_over() {
     $("p#status").text("Game over!");
-    $("button").hide();
   }
 
   function fail() {
@@ -15,6 +14,10 @@ $(document).ready(function() {
     if(fails == max_fails) {
       game_over();
     }
+  }
+
+  function win() {
+    $("p#status").text("Congrats!");
   }
 
   function test_letter(letter) {
@@ -43,8 +46,12 @@ $(document).ready(function() {
             public_word = replace_str(public_word, i, key);
           }
         }
-        console.log(public_word);
+
         refresh_public_word();
+
+        if(public_word == secret_word) {
+          win();
+        }
       } else {
         fail();
       }
