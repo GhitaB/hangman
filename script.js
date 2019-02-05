@@ -24,12 +24,14 @@ $(document).ready(function() {
   function start_game() {
     $("p#public-word").text(public_word);
 
-    var aa = test_letter("x");
-    if(aa != -1) {
-      console.log(aa);
-    } else {
-      fail();
-    }
+    $(document).keypress(function(event) {
+      var test = test_letter(String.fromCharCode(event.which));
+      if(test != -1) {
+        console.log(test);
+      } else {
+        fail();
+      }
+    });
   }
 
   start_game();
