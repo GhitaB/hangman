@@ -21,13 +21,30 @@ $(document).ready(function() {
     return secret_word.indexOf(letter);
   }
 
-  function start_game() {
+  function replace_str(str, pos, value){
+    var arr = str.split('');
+    arr[pos]=value;
+    return arr.join('');
+  }
+
+  function refresh_public_word() {
     $("p#public-word").text(public_word);
+  }
+
+  function start_game() {
+    refresh_public_word();
 
     $(document).keypress(function(event) {
-      var test = test_letter(String.fromCharCode(event.which));
+      var key = String.fromCharCode(event.which);
+      var test = test_letter(key);
       if(test != -1) {
-        console.log(test);
+        for(var i = 0; i <= secret_word.length; i++) {
+          if(secret_word[i] == key) {
+            public_word = replace_str(public_word, i, key);
+          }
+        }
+        console.log(public_word);
+        refresh_public_word();
       } else {
         fail();
       }
