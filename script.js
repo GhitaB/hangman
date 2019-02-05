@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 
   function game_over() {
-    $("p#status").text("Game over!");
+    $("p#status").text("Game over! The word was: " + secret_word);
     game_is_finished = true;
   }
 
