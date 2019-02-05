@@ -1,8 +1,22 @@
 $(document).ready(function() {
   window.fails = 0;
   window.max_fails = 6;
+  window.possible_words = [
+    "romania",
+    "italy",
+    "france",
+    "spain",
+    "hungary",
+    "moldova"
+  ];
   window.secret_word = "hangman";
   window.public_word = "_______";
+
+  function choose_word() {
+    var random_number = Math.floor(Math.random() * possible_words.length);
+    secret_word = possible_words[random_number];
+    public_word = Array(secret_word.length).join("_");
+  }
 
   function game_over() {
     $("p#status").text("Game over!");
@@ -35,6 +49,7 @@ $(document).ready(function() {
   }
 
   function start_game() {
+    choose_word();
     refresh_public_word();
 
     $(document).keypress(function(event) {
