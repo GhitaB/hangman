@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+/*
+  https://coolors.co/ddd1c7-c2cfb2-8db580-7e8987-4b4a67
+  #ddd1c7 #c2cfb2 #8db580 #7e8987 #4b4a67
+ */
+
+p#public-word {
+  letter-spacing: 0.5em;
+  font-size: 3em;
+  color: #4b4a67;
+  font-family: monospace;
+}
+
+p#status {
+  color: #4b4a67;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+body {
+  background: #4b4a67;
+  font-family: 'Pacifico', cursive;
+}
+
+div.container {
+  background: #ddd1c7;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  text-align: center;
+  border: 10px solid #8db580;
+}
+
+div.container h1 {
+  font-size: 5em;
+  font-weight: 400;
+  color: #7e8987;
+}
