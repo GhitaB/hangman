@@ -18,7 +18,7 @@ $(document).ready(function() {
   function choose_word() {
     var random_number = Math.floor(Math.random() * possible_words.length);
     secret_word = possible_words[random_number];
-    public_word = Array(secret_word.length).join("_");
+    public_word = Array(secret_word.length + 1).join("_");
   }
 
 
