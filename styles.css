@@ -38,3 +38,8 @@ div.container h1 {
   font-weight: 400;
   color: #7e8987;
 }
+
+div.container img {
+  max-height: 300px;
+  width: auto;
+}
