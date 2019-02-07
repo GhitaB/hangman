@@ -15,7 +15,7 @@ $(document).ready(function() {
   window.secret_word = "hangman";
   window.public_word = "_______";
   window.game_is_finished = false;
-  window.wrong_letters = "";
+  window.wrong_letters = [];
 
 
   function replace_str(str, pos, value){
@@ -73,7 +73,12 @@ $(document).ready(function() {
 
 
   function add_wrong_letter(letter) {
-    wrong_letters = wrong_letters + " " + letter;
+    if (wrong_letters.indexOf(letter) > -1)
+      return false;
+    else {
+      wrong_letters.push(letter);
+      return true;
+    }
   }
 
 
@@ -83,7 +88,8 @@ $(document).ready(function() {
 
     $(document).keypress(function(event) {
       if(!game_is_finished) {
-        var key = String.fromCharCode(event.which);
+        var key = String.fromCharCode(event.which).toLowerCase();
+        if (key.match(/[a-z]/g)){
         var test = test_letter(key);
         if(test != -1) {
           for(var i = 0; i <= secret_word.length; i++) {
@@ -97,10 +103,10 @@ $(document).ready(function() {
           if(public_word == secret_word) {
             win();
           }
-        } else {
-          add_wrong_letter(key);
+        } else if (add_wrong_letter(key)){
           fail();
         }
+      }
       }
     });
   }
