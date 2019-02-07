@@ -7,7 +7,10 @@ $(document).ready(function() {
     "france",
     "spain",
     "hungary",
-    "moldova"
+    "moldova",
+    "two words",
+    "lorem ipsum dolor",
+    "lorem ipsum dolor sit amet"
   ];
   window.secret_word = "hangman";
   window.public_word = "_______";
@@ -15,10 +18,23 @@ $(document).ready(function() {
   window.wrong_letters = "";
 
 
+  function replace_str(str, pos, value){
+    var arr = str.split('');
+    arr[pos]=value;
+    return arr.join('');
+  }
+
+
   function choose_word() {
     var random_number = Math.floor(Math.random() * possible_words.length);
     secret_word = possible_words[random_number];
     public_word = Array(secret_word.length + 1).join("_");
+
+    for(var i = 0; i <= secret_word.length; i++) {
+      if(secret_word[i] == " ") {
+        public_word = replace_str(public_word, i, " ");
+      }
+    }
   }
 
 
@@ -48,13 +64,6 @@ $(document).ready(function() {
 
   function test_letter(letter) {
     return secret_word.indexOf(letter);
-  }
-
-
-  function replace_str(str, pos, value){
-    var arr = str.split('');
-    arr[pos]=value;
-    return arr.join('');
   }
 
 
