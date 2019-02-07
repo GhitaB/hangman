@@ -88,7 +88,8 @@ $(document).ready(function() {
 
     $(document).keypress(function(event) {
       if(!game_is_finished) {
-        var key = String.fromCharCode(event.which);
+        var key = String.fromCharCode(event.which).toLowerCase();
+        if (key.match(/[a-z]/g)){
         var test = test_letter(key);
         if(test != -1) {
           for(var i = 0; i <= secret_word.length; i++) {
@@ -105,6 +106,7 @@ $(document).ready(function() {
         } else if (add_wrong_letter(key)){
           fail();
         }
+      }
       }
     });
   }
